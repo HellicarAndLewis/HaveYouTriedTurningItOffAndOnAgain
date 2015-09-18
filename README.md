@@ -6,7 +6,7 @@ A travelling show of interactions.
 Digital Ephemera:
 
 Smile activated video app, switches between various when you smile. TRY NOT TO SMILE!
-Requires the following addons: ofxOpenCV, ofxSmile (my branch linked below), ofxAVFVideoPlayer.
+Requires the following addons: ofxOpenCV, ofxSmile (my fork linked below, all credit to bakercp for his amazing work), ofxAVFVideoPlayer.
 
 Add following frameworks for AVFVideoPlayer:
 AVFoundation,
