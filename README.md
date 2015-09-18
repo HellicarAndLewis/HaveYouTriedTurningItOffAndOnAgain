@@ -13,14 +13,16 @@ AVFoundation
 QuartzCore
 CoreMedia
 
-use my fork of ofxSmile found here:
+Use my fork of ofxSmile found here:
 
 2. Video Wall
-3. 
+
+
 Circular alpha-masked video player, plays video continuously on a loop forever
 
 (in progress)
 
 3. 4 ofxCV interactions
-4. 
+
+
 (in progress)
