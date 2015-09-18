@@ -9,11 +9,11 @@ Smile activated video app, switches between various when you smile. TRY NOT TO S
 Requires the following addons: ofxOpenCV, ofxSmile (my branch linked below), ofxAVFVideoPlayer.
 
 Add following frameworks for AVFVideoPlayer:
-AVFoundation
-QuartzCore
+AVFoundation,
+QuartzCore,
 CoreMedia
 
-Use my fork of ofxSmile found here:
+Use my fork of ofxSmile found here: https://github.com/Bentleyj/ofxSmile
 
 Video Wall:
 
