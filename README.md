@@ -20,7 +20,7 @@ Video Wall:
 
 Circular alpha-masked video player, plays video continuously on a loop forever
 
-(in progress)
+use up and down arrows to change the size of the masking circle.
 
 4 ofxCV interactions:
 
