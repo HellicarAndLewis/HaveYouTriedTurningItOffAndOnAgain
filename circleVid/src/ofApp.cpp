@@ -17,12 +17,11 @@ void fillPage(float diameter) {
 void ofApp::setup(){
     ofBackground(0);
     mask.loadImage("Circle.png");
-    player = new ofxAVFVideoPlayer();
+    player = new ofVideoPlayer();
     player->setPixelFormat(OF_PIXELS_RGBA);
     player->setLoopState(OF_LOOP_NORMAL);
     player->loadMovie("movies/cats1.mp4");
-    started = player->isLoaded();
-
+    player->play();
     settings.loadFile("settings.xml");
     diameter = settings.getValue("settings:diameter", 500.0);
 }

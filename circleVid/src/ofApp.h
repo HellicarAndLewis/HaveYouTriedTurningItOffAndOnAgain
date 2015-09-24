@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxAVFVideoPlayer.h"
 #include "ofxXMLSettings.h"
 
 class ofApp : public ofBaseApp{
@@ -15,7 +14,7 @@ class ofApp : public ofBaseApp{
         void exit();
     
         ofxXmlSettings settings;
-        ofxAVFVideoPlayer* player;
+        ofVideoPlayer* player;
         ofImage mask;
         float diameter;
         bool started;

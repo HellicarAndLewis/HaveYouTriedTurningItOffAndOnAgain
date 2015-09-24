@@ -5,7 +5,7 @@ void ofApp::swapPlayer() {
     currentPlayer %= 2;
 }
 
-void stopAndLoadNewVid(ofxAVFVideoPlayer* vidPlayer, string vidToLoad) {
+void stopAndLoadNewVid(ofVideoPlayer* vidPlayer, string vidToLoad) {
     vidPlayer->stop();
     vidPlayer->close();
     vidPlayer->loadMovie(vidToLoad);
@@ -38,7 +38,7 @@ void ofApp::setup(){
     smoothPct = 0.0;
     
     for(int i=0; i<2; i++) {
-        players[i] = new ofxAVFVideoPlayer();
+        players[i] = new ofVideoPlayer();
         //players[i] = new ofVideoPlayer();
         players[i]->setLoopState(OF_LOOP_NORMAL);
         players[i]->setPixelFormat(OF_PIXELS_RGB);
