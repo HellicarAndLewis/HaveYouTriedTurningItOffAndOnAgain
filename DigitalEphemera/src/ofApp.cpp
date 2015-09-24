@@ -56,7 +56,7 @@ void ofApp::update(){
     
     smiles = ofxSmile::getSmile(img);
     smilePct = 0.0;
-    for(auto smile : smiles) {
+    for(pair<ofVec4f, float> smile : smiles) {
         if(smile.second > smilePct) smilePct = smile.second;
     }
     
