@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxOpenCV.h"
+#include "ofxOpenCv.h"
 #include "ofxSmile.h"
 
 class ofApp : public ofBaseApp{
