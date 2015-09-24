@@ -9,7 +9,8 @@
 #include "flowState.h"
 
 void flowState::setup() {
-    dimFac = 0.5;
+    dimFac = 0.3;
+    mesh.setMode(OF_PRIMITIVE_LINES);
 }
 
 void flowState::update() {
@@ -19,8 +20,13 @@ void flowState::update() {
         Mat flow = farneback.getFlow();
         for(int x=0; x < flow.cols; x++) {
             for(int y=0; y < flow.rows; y++) {
-                locs.push_back( new Integrator<ofVec2f>());
+                Integrator<ofVec2f> *newInt = new Integrator<ofVec2f>();
+                newInt->attraction = 0.3;
+                newInt->damping = 0.5;
+                locs.push_back(newInt);
                 cout<<locs.size()<<endl;
+                mesh.addVertex(ofVec2f(x, y));
+                mesh.addVertex(ofVec2f(x, y));
             }
         }
     }
@@ -29,7 +35,8 @@ void flowState::update() {
 
 void flowState::draw() {
     ofSetColor(255);
-    drawFlow(0, 0, ofGetWidth(), ofGetHeight());
+    ofScale(ofGetWidth()/farneback.getFlow().cols, ofGetWidth()/farneback.getFlow().cols);
+    mesh.draw();
 }
 
 void flowState::keyPressed(int key) {
@@ -51,10 +58,13 @@ void flowState::stateExit() {
 void flowState::updateLocs() {
     if(locs.size() > 0) {
         Mat flow = farneback.getFlow();
+        int meshIndex = 0;
         for(int x=0; x < flow.cols; x++) {
             for(int y=0; y < flow.rows; y++) {
                 locs[y + x*flow.rows]->target(ofVec2f(farneback.getFlowPosition(x, y)));
                 locs[y + x*flow.rows]->update();
+                mesh.setVertex(meshIndex, locs[y + x*flow.rows]->val);
+                meshIndex += 2;
             }
         }
     }
@@ -66,13 +76,6 @@ void flowState::drawFlow(int x, int y, int width, int height) {
         Mat flow = farneback.getFlow();
         int numLines = 0;;
         ofVec2f scale(width/flow.cols, height/flow.rows);
-        for(int x = 0; x < flow.cols; x++) {
-            for(int y = 0; y < flow.rows; y++) {
-                numLines++;
-                ofVec2f cur = ofVec2f(x, y) * scale + offset;
-                ofLine(cur, locs[y + x*flow.rows]->val * scale + offset);
-            }
-        }
     }
 }
 

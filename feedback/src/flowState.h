@@ -27,5 +27,6 @@ private:
     FlowFarneback farneback;
     float dimFac;
     int stepSize;
+    ofMesh mesh;
     vector< Integrator<ofVec2f>* > locs;
 };

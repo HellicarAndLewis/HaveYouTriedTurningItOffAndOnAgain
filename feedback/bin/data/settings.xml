@@ -1,4 +1,4 @@
 <settings>
-    <initialState>dustState</initialState>
+    <initialState>flowState</initialState>
     <initialstate>leftState</initialstate>
 </settings>
