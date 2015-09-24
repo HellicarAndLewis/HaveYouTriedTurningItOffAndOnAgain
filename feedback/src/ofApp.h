@@ -4,7 +4,6 @@
 #include "ofMain.h"
 
 //include addons
-#include "ofxGui.h"
 #include "ofxStateMachine.h"
 #include "ofxXmlSettings.h"
 
