@@ -56,8 +56,8 @@ void ofApp::update(){
     
     smiles = ofxSmile::getSmile(img);
     smilePct = 0.0;
-    for(pair<ofVec4f, float> smile : smiles) {
-        if(smile.second > smilePct) smilePct = smile.second;
+    for(int i=0; i < smiles.size(); i++) {
+        if(smiles[i].second > smilePct) smilePct = smiles[i].second;
     }
     
     smoothPct *= 0.8;
@@ -91,12 +91,12 @@ void ofApp::draw(){
     
     if(smileDetected) {
         ofSetColor(255);
-        for(auto smile : smiles) {
-            float faceX = smile.first.x;
-            float faceY = smile.first.y;
-            float faceWidth = smile.first.z;
-            float faceHeight = smile.first.w;
-            if(smile.second > 0.50) smiley.draw(ofGetWidth() - vision.color.width + faceX, faceY, faceWidth, faceHeight);
+        for(int i=0; i < smiles.size() ; i++) {
+            float faceX = smiles[i].first.x;
+            float faceY = smiles[i].first.y;
+            float faceWidth = smiles[i].first.z;
+            float faceHeight = smiles[i].first.w;
+            if(smiles[i].second > 0.50) smiley.draw(ofGetWidth() - vision.color.width + faceX, faceY, faceWidth, faceHeight);
         }
         ofSetColor(255, 255, 255, 255);
     }
