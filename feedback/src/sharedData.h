@@ -6,6 +6,11 @@
 //
 //
 #pragma once
+
+#ifdef __arm__
+#include "ofxCvPiCam.h"// <--- for Linux
+#endif
+
 #include "ofxCv.h"
 #include "ofxStateMachine.h"
 
