@@ -6,7 +6,7 @@
 //include addons
 #include "ofxGui.h"
 #include "ofxStateMachine.h"
-#include "ofxXMLSettings.h"
+#include "ofxXmlSettings.h"
 
 //include Shared Data for State Machine
 #include "sharedData.h"
