@@ -1,4 +1,3 @@
 <settings>
-    <initialState>flowState</initialState>
-    <initialstate>leftState</initialstate>
+    <initialState>graphState</initialState>
 </settings>

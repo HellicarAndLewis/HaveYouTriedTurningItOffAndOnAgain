@@ -4,3 +4,4 @@ ofxXmlSettings
 ofxCv
 ofxIntegrator
 ofxStateMachine
+ofxCvPiCam
