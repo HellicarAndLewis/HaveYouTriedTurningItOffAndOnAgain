@@ -1,4 +1,4 @@
-#include "rightstate.h"
+#include "rightState.h"
 
 using namespace ofxCv;
 using namespace cv;
