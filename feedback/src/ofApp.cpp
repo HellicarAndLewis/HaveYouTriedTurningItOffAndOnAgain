@@ -11,7 +11,7 @@ void ofApp::setup(){
     stateMachine.getSharedData().setup();
     
     settings.loadFile("settings.xml");
-    stateMachine.getSharedData().initialState = settings.getValue("settings:initialState", "flowState");
+    stateMachine.getSharedData().initialState = settings.getValue("settings:initialState", "graphState");
     stateMachine.getSharedData().setupCamera(320, 240);
     stateMachine.addState<flowState>();
     stateMachine.addState<leftState>();
@@ -20,7 +20,7 @@ void ofApp::setup(){
     stateMachine.addState<graphState>();
     stateMachine.addState<dustState>();
     
-    stateMachine.changeState(stateMachine.getSharedData().initialState);
+    stateMachine.changeState("graphState");
     
 }
 
