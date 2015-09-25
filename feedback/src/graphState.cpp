@@ -54,7 +54,7 @@ void graphState::draw() {
         }
         ofEndShape();
     }
-    if(getSharedData().initialState != this.getName()) {
+    if(getSharedData().initialState != getName()) {
         changeState(getSharedData().initialState);
     }
 }
