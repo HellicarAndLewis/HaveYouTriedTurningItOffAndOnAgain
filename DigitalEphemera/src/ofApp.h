@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxOpenCv.h"
 #include "ofxSmile.h"
+#include "ofxAVFVideoPlayer.h"
 
 class ofApp : public ofBaseApp{
 
@@ -22,7 +23,7 @@ class ofApp : public ofBaseApp{
     float lastTime;
     float smoothPct;
     int currentPlayer;
-    ofVideoPlayer* players[2];
+    ofxAVFVideoPlayer* players[2];
     vector<string> movies;
     int currentMovie;
     bool smileDetected;

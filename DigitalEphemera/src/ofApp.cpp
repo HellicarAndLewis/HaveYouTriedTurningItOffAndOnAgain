@@ -5,7 +5,7 @@ void ofApp::swapPlayer() {
     currentPlayer %= 2;
 }
 
-void stopAndLoadNewVid(ofVideoPlayer* vidPlayer, string vidToLoad) {
+void stopAndLoadNewVid(ofxAVFVideoPlayer* vidPlayer, string vidToLoad) {
     vidPlayer->stop();
     vidPlayer->close();
     vidPlayer->loadMovie(vidToLoad);
@@ -38,8 +38,7 @@ void ofApp::setup(){
     smoothPct = 0.0;
     
     for(int i=0; i<2; i++) {
-        players[i] = new ofVideoPlayer();
-        //players[i] = new ofVideoPlayer();
+        players[i] = new ofxAVFVideoPlayer();
         players[i]->setLoopState(OF_LOOP_NORMAL);
         players[i]->setPixelFormat(OF_PIXELS_RGB);
         players[i]->loadMovie(movies[i]);
@@ -84,10 +83,10 @@ void ofApp::update(){
 void ofApp::draw(){
     ofSetColor(255);
     players[currentPlayer]->draw(0, 0, ofGetWidth(), ofGetHeight());
-    vision.color.draw(ofGetWidth() - 320, 0);
+    ofTranslate(ofGetWidth()/2 - vision.color.width/2, ofGetHeight()/2 - vision.color.height/2);
+    vision.color.mirror(false, true);
+    vision.color.draw(0, 0);
     unsigned long long now = ofGetElapsedTimef();
-    ofDrawBitmapString("smile        = " + ofToString(smilePct, 2), 20, 20);
-    ofDrawBitmapString("smile smooth = " + ofToString(smoothPct, 2), 20, 36);
     
     if(smileDetected) {
         ofSetColor(255);
@@ -96,7 +95,7 @@ void ofApp::draw(){
             float faceY = smiles[i].first.y;
             float faceWidth = smiles[i].first.z;
             float faceHeight = smiles[i].first.w;
-            if(smiles[i].second > 0.50) smiley.draw(ofGetWidth() - vision.color.width + faceX, faceY, faceWidth, faceHeight);
+            if(smiles[i].second > 0.50) smiley.draw(vision.color.width - faceX - faceWidth, faceY, faceWidth, faceHeight);
         }
         ofSetColor(255, 255, 255, 255);
     }
