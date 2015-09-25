@@ -21,11 +21,13 @@ public:
     void keyPressed(int key);
     string getName();
     void stateEnter();
-    void setArea(int x, int y, int width, int height);
+    void updateColors();
     
     float dimFac;
     
-    ofxCv::FlowPyrLK flow;
+    ofMesh mesh;
+    vector< pair<Integrator<ofVec2f>, ofVec2f> > colors;
+    FlowFarneback farneback;
     ofVec2f p1;
     ofRectangle rect;
     bool areaSet;
