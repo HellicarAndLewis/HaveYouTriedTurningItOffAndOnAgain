@@ -10,7 +10,6 @@
 
 void dustState::setup() {
     dimFac = 0.3;
-    glPointSize(25.0);
     mesh.setMode(OF_PRIMITIVE_POINTS);
 }
 
