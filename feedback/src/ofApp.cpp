@@ -21,6 +21,7 @@ void ofApp::setup(){
     stateMachine.addState<dustState>();
     
     stateMachine.changeState("graphState");
+    ofHideCursor();
     
 }
 
