@@ -54,7 +54,7 @@ void graphState::draw() {
         }
         ofEndShape();
     }
-    if(getSharedData().initialState != getName()) {
+    if(getSharedData().initialState != getName() && ofGetElapsedTimef() > 5) {
         changeState(getSharedData().initialState);
     }
 }
