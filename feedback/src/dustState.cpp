@@ -10,6 +10,7 @@
 
 void dustState::setup() {
     dimFac = 0.3;
+    glPointSize(10.0);
     mesh.setMode(OF_PRIMITIVE_POINTS);
 }
 
@@ -26,7 +27,6 @@ void dustState::update() {
                 //newInt.set(ofVec2f(x, y));
                 ofVec2f newVec = ofVec2f(x, y);
                 colors.push_back(make_pair(newInt, newVec));
-                cout<<colors.size()<<endl;
                 mesh.addVertex(ofVec2f(x, y));
                 mesh.addColor(0.0f);
             }

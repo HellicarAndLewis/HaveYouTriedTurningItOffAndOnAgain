@@ -24,7 +24,6 @@ void flowState::update() {
                 newInt->attraction = 0.3;
                 newInt->damping = 0.5;
                 locs.push_back(newInt);
-                cout<<locs.size()<<endl;
                 mesh.addVertex(ofVec2f(x, y));
                 mesh.addVertex(ofVec2f(x, y));
             }
@@ -61,7 +60,15 @@ void flowState::updateLocs() {
         int meshIndex = 0;
         for(int x=0; x < flow.cols; x++) {
             for(int y=0; y < flow.rows; y++) {
-                locs[y + x*flow.rows]->target(ofVec2f(farneback.getFlowPosition(x, y)));
+		ofVec2f newLoc = ofVec2f(farneback.getFlowPosition(x, y));
+		ofVec2f oldLoc = mesh.getVertex(meshIndex+1);
+		ofVec2f diff = newLoc - oldLoc;
+		if( diff.length() > 100) {
+			diff.normalize();
+			diff*=100;
+			newLoc = diff + oldLoc;
+		}
+                locs[y + x*flow.rows]->target(newLoc);
                 locs[y + x*flow.rows]->update();
                 mesh.setVertex(meshIndex, locs[y + x*flow.rows]->val);
                 meshIndex += 2;
