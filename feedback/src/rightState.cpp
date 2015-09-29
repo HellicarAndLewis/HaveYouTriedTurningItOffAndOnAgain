@@ -10,6 +10,8 @@ void Glow::setup(const cv::Rect& track) {
     left = toOf(track).getCenter().x;
     deathPoint = toOf(track).getCenter().x;
     width = 0.0;
+    width.attraction = 0.1;
+    left.attraction = 0.1;
 }
 
 void Glow::update(const cv::Rect& track) {
