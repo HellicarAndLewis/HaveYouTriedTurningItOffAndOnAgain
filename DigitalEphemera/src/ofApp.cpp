@@ -15,6 +15,8 @@ void stopAndLoadNewVid(ofxAVFVideoPlayer* vidPlayer, string vidToLoad) {
 void ofApp::setup(){
     ofBackground(30, 30, 30);
     
+    drawDebug = false;
+    
     vision.setupCamera(0, 320, 240);
     
     ttf.loadFont("Helvetica.ttf", 48);
@@ -82,30 +84,38 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofSetColor(255);
+    ofPushMatrix();
     players[currentPlayer]->draw(0, 0, ofGetWidth(), ofGetHeight());
-    ofTranslate(ofGetWidth()/2 - vision.color.width/2, ofGetHeight()/2 - vision.color.height/2);
-    vision.color.mirror(false, true);
-    vision.color.draw(0, 0);
-    unsigned long long now = ofGetElapsedTimef();
-    
-    if(smileDetected) {
-        ofSetColor(255);
-        for(int i=0; i < smiles.size() ; i++) {
-            float faceX = smiles[i].first.x;
-            float faceY = smiles[i].first.y;
-            float faceWidth = smiles[i].first.z;
-            float faceHeight = smiles[i].first.w;
-            if(smiles[i].second > 0.50) smiley.draw(vision.color.width - faceX - faceWidth, faceY, faceWidth, faceHeight);
+    if(drawDebug) {
+        ofTranslate(ofGetWidth()/2 + vision.color.width/2, 100);
+        ofScale(-1, 1);
+        vision.color.draw(0, 0);
+        unsigned long long now = ofGetElapsedTimef();
+        
+        if(smileDetected) {
+            /* ACID SMILEY OVER FACE */
+    //        ofSetColor(255);
+    //        for(int i=0; i < smiles.size() ; i++) {
+    //            float faceX = smiles[i].first.x;
+    //            float faceY = smiles[i].first.y;
+    //            float faceWidth = smiles[i].first.z;
+    //            float faceHeight = smiles[i].first.w;
+    //            if(smiles[i].second > 0.50) smiley.draw(faceX, faceY, faceWidth, faceHeight);
+    //        }
+            /* FLASH WHITE SCREEN (change alpha value to change opacity)*/
+            int alpha = 127;
+            ofSetColor(255, 255, 255, alpha);
+            ofRect(0, 0, vision.color.width, vision.color.height);
         }
-        ofSetColor(255, 255, 255, 255);
     }
+    ofPopMatrix();
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     if(key == ' ')
     {
-        vision.togglePlayback();
+        drawDebug = !drawDebug;
     }
     
     // if you need to adjust the camera properties

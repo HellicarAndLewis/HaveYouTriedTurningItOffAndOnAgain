@@ -29,6 +29,7 @@ class ofApp : public ofBaseApp{
     bool smileDetected;
     vector<pair<ofVec4f,float> > smiles;
     float smileX, smileY, smileWidth, smileHeight;
+    bool drawDebug;
     
     ofTrueTypeFont ttf;
     ofTrueTypeFont ttfSmall;
