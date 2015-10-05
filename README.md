@@ -7,6 +7,8 @@ The second "Quartet" (aka Feedback) uses a series of graphical interpretations o
 
 http://hellicarandlewis.com
 
+DigitalEphemera:
+
 Requires the following addons: ofxOpenCV, ofxSmile (my fork linked below, all credit to bakercp for his amazing work), ofxAVFVideoPlayer.
 
 Add following frameworks for AVFVideoPlayer:
@@ -16,13 +18,13 @@ CoreMedia
 
 Use my fork of ofxSmile found here: https://github.com/Bentleyj/ofxSmile
 
-Video Wall:
+circleVid:
 
 Circular alpha-masked video player, plays video continuously on a loop forever
 
 use up and down arrows to change the size of the masking circle.
 
-Quartet aka Feedback:
+feedback aka Quartet:
 
 Four separate programs designed to watch each other and the viewer.
 
