@@ -14,6 +14,7 @@ void stopAndLoadNewVid(ofxAVFVideoPlayer* vidPlayer, string vidToLoad) {
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(30, 30, 30);
+    ofHideCursor(); //hide that cursor for when running in a gallery!
     
     drawDebug = false;
     
@@ -48,6 +49,7 @@ void ofApp::setup(){
     currentMovie = 0;
     players[currentPlayer]->setPaused(false);
     players[currentPlayer]->play();
+    std::srand ( unsigned ( std::time(0))); //seed the std random seed with seeds as per http://www.cplusplus.com/reference/algorithm/random_shuffle/
 }
 
 //--------------------------------------------------------------
@@ -74,6 +76,9 @@ void ofApp::update(){
             players[currentPlayer]->play();
             players[currentPlayer]->setPaused(false);
             lastTime = ofGetElapsedTimef();
+            std::random_shuffle(movies.begin(), movies.end());
+            //shuffle to make sure we get a new video, but it might be the same but it's better than always having same order
+            //as per http://www.cplusplus.com/reference/algorithm/random_shuffle/ thanks internets!
         } else {
             smileDetected = false;
         }
